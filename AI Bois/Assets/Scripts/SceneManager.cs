@@ -5,7 +5,6 @@ using UnityEngine;
 public class SceneManager : MonoBehaviour {
 
     public float resetTime;
-    SceneManager sceneman;
 
 	void Start () {
         StartCoroutine(Reset());
