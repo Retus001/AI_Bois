@@ -15,6 +15,22 @@ public class WashingMachine : MonoBehaviour
     public TextMeshProUGUI waterLevels;
     public TextMeshProUGUI timeLevels;
 
+    public float lowWater;
+    public float medWater;
+    public float highWater;
+
+    public float soapSprinkle;
+    public float soapCup;
+    public float soapCupDouble;
+
+    public float express;
+    public float normal;
+    public float extended;
+
+    public float finalWater;
+    public float finalSoap;
+    public float finalTime;
+
     private float Soap;
     private float Water;
     private float Time;
@@ -22,11 +38,11 @@ public class WashingMachine : MonoBehaviour
     private float w_light, w_average, w_heavy, w_massive;
     private float g_clean, g_dirty, g_poisonous;
 
-    private FuzzyMemberships memberships;
+    private FuzzyMemberships mmb;
 
     private void Start()
     {
-        memberships = GetComponent<FuzzyMemberships>();
+        mmb = GetComponent<FuzzyMemberships>();
     }
 
     public void SetWeight(float _w)
@@ -50,17 +66,17 @@ public class WashingMachine : MonoBehaviour
 
     public void FuzzWeight()
     {
-        w_light = memberships.functionDegree_Inv(weight, 10, 15);
-        w_average = memberships.functionTrapezoid(weight, 10, 15, 30, 35);
-        w_heavy = memberships.functionTrapezoid(weight, 25, 35, 50, 55);
-        w_massive = memberships.functionDegree(weight, 50, 55);
+        w_light = mmb.functionDegree_Inv(weight, 10, 15);
+        w_average = mmb.functionTrapezoid(weight, 10, 15, 30, 35);
+        w_heavy = mmb.functionTrapezoid(weight, 25, 35, 50, 55);
+        w_massive = mmb.functionDegree(weight, 50, 55);
     }
 
     public void FuzzGrime()
     {
-        g_clean = memberships.functionDegree_Inv(grime, 10, 15);
-        g_dirty = memberships.functionTriangle(grime, 10, 30, 50);
-        g_poisonous = memberships.functionDegree(grime, 45, 55);
+        g_clean = mmb.functionDegree_Inv(grime, 10, 15);
+        g_dirty = mmb.functionTriangle(grime, 10, 30, 50);
+        g_poisonous = mmb.functionDegree(grime, 45, 55);
     }
 
     public void UpdateUIData(float _water, float _soap, float _time)
@@ -72,39 +88,31 @@ public class WashingMachine : MonoBehaviour
 
     private float Remap(float _fromA, float _fromB , float _toA, float _toB, float _val)
     {
-        return (_val - _fromA) / (_toA - _fromA) * (_toB - _fromB) + _fromB;
+        return _toA + (_val - _fromA) * (_toB - _toA) / (_fromB - _fromA);
     }
 
     public void CalculateWashingData()
     {
         // Water Levels
-        float lesserWater = w_light;
-        float commonWater = memberships.F_OR(w_light, w_average);
-        float greaterWater = memberships.F_OR(w_average, w_heavy);
-        float epicWater = memberships.F_OR(w_heavy, w_massive);
-        float godlyWater = w_massive;
+        lowWater = mmb.F_AND(w_light, mmb.F_NOT(mmb.F_OR(w_heavy, w_massive)));
+        medWater = mmb.F_AND(mmb.F_NOT(w_heavy), w_average);
+        highWater = mmb.F_OR(w_heavy, w_massive);
 
-        float finalWater = Mathf.Max(lesserWater + commonWater + greaterWater + epicWater + godlyWater);
-        //finalWater = Remap(0, 1, 0, 200, finalWater);
+        finalWater = Mathf.Lerp(1, 200, ((1 - lowWater) + medWater + highWater)/2);
 
         // Soap Levels
-        float sprinkle = g_clean;
-        float soapCup = memberships.F_AND(memberships.F_OR(g_clean, g_dirty), memberships.F_OR(w_light, w_average));
-        float soapBag = memberships.F_AND(g_dirty, w_heavy);
-        float soapBarrel = memberships.F_AND(g_dirty, w_massive);
-        float soapCargo = memberships.F_AND(g_poisonous, w_massive);
+        soapSprinkle = mmb.F_AND(g_clean, mmb.F_NOT(mmb.F_AND(g_dirty, g_poisonous)));
+        soapCup = mmb.F_AND(mmb.F_OR(g_clean, g_dirty), w_average);
+        soapCupDouble = mmb.F_AND(g_dirty, mmb.F_OR(w_heavy, w_massive));
 
-        float finalSoap = Mathf.Max(sprinkle, soapCup, soapBag, soapBarrel, soapCargo);
-        //finalSoap = Remap(0, 1, 0, 1000, finalSoap);
+        finalSoap = Mathf.Lerp(10, 300, ((1 - soapSprinkle) + soapCup + soapCupDouble)/2);
 
         // Time
-        float express = memberships.F_AND(w_light, g_clean);
-        float normal = memberships.F_AND(memberships.F_OR(w_light, w_average), g_dirty);
-        float extended = memberships.F_AND(memberships.F_OR(w_average, w_heavy), memberships.F_OR(g_dirty, g_poisonous));
-        float infinite = memberships.F_AND(w_massive, g_poisonous);
+        express = mmb.F_AND(w_light, g_clean);
+        normal = mmb.F_AND(mmb.F_OR(w_light, w_average), g_dirty);
+        extended = mmb.F_AND(mmb.F_OR(w_heavy, w_massive), mmb.F_OR(g_dirty, g_poisonous));
 
-        float finalTime = Mathf.Max(express, normal, extended, infinite);
-        //finalTime = Remap(0, 1, 0, 8, finalTime);
+        finalTime = Mathf.Lerp(5, 120, ((1 - express) + normal + extended)/2);
 
         UpdateUIData(finalWater, finalSoap, finalTime);
     }
