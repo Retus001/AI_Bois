@@ -54,7 +54,7 @@ public class FuzzyMemberships : MonoBehaviour
         if (_val <= _min)
             mem = 1.0f;
         else if (_val > _min && _val <= _max)
-            mem = -(_val / (_max - _min)) - (_min / (_max - _min));
+            mem = -(_val / (_max - _min)) + (_min / (_max - _min));
         else if (_val > _max)
             mem = 0.0f;
 
@@ -96,13 +96,28 @@ public class FuzzyMemberships : MonoBehaviour
         return mem;
     }
 
-    void Start()
+    public float F_AND(float _a, float _b)
     {
-        
-    }
+        float val = 0.0f;
 
-    void Update()
+        val = Mathf.Min(_a, _b);
+
+        return val;
+    }
+    public float F_OR(float _a, float _b)
     {
-        
+        float val = 0.0f;
+
+        val = Mathf.Max(_a, _b);
+
+        return val;
+    }
+    public float F_NOT(float _a)
+    {
+        float val = 0.0f;
+
+        val = 1.0f - _a;
+
+        return val;
     }
 }
