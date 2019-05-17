@@ -140,9 +140,7 @@ public class ColorFuzzification : MonoBehaviour
             mmb.F_AND(blue[0], mmb.F_AND(mmb.F_AND(mmb.F_AND(mmb.F_NOT(blue[1]), mmb.F_NOT(blue[2])), mmb.F_NOT(blue[3])), mmb.F_NOT(blue[4])))));
 
         // Gray
-        colors[1].weight = mmb.F_AND(mmb.F_AND(red[2], mmb.F_AND(mmb.F_AND(mmb.F_AND(mmb.F_NOT(red[1]), mmb.F_NOT(red[0])), mmb.F_NOT(red[3])), mmb.F_NOT(red[4]))),
-            mmb.F_AND(mmb.F_AND(green[2], mmb.F_AND(mmb.F_AND(mmb.F_AND(mmb.F_NOT(green[1]), mmb.F_NOT(green[0])), mmb.F_NOT(green[3])), mmb.F_NOT(green[4]))),
-            mmb.F_AND(blue[2], mmb.F_AND(mmb.F_AND(mmb.F_AND(mmb.F_NOT(blue[1]), mmb.F_NOT(blue[0])), mmb.F_NOT(blue[3])), mmb.F_NOT(blue[4])))));
+        colors[1].weight = mmb.F_AND(mmb.F_OR(mmb.F_AND(red[1], mmb.F_AND(green[1], blue[1])), mmb.F_OR(mmb.F_AND(red[2], mmb.F_AND(green[2], blue[2])), mmb.F_AND(red[3], mmb.F_AND(green[3], blue[3])))), mmb.F_NOT(mmb.F_AND(red[4], mmb.F_AND(green[4], blue[4]))));
 
         // White
         colors[2].weight = mmb.F_AND(red[4], mmb.F_AND(green[4], blue[4]));
