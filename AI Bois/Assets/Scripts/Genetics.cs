@@ -13,19 +13,26 @@ public class Genetics : MonoBehaviour
     public GameObject populationArea;
     [Range(0, 1)]
     public float mutationRate;
+    public GameObject[] timeControls;
 
-    private float currentTime;
+    public float currentTime;
     private bool advanceTime;
     private GameObject[] parents = new GameObject[2];
     private List<GameObject> population = new List<GameObject>();
     private float[] populationComparison;
     private Vector3 parentGenes;
 
+    public void RandomizeGenePool() {
+        for (int i = 0; i < populationSize; i++){
+            population[i].GetComponent<Image>().color= new Color(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f));
+        }
+    }
+
     public void NewGeneration()
     {
         for (int i = 0; i < populationSize; i++)
         {
-            population[i].GetComponent<Image>().material.color = Crossover();
+            population[i].GetComponent<Image>().color = Crossover();
         }
     }
 
@@ -45,9 +52,9 @@ public class Genetics : MonoBehaviour
                 selectedParent[i] = 1;
         }
 
-        colorResult.r = parents[selectedParent[0]].GetComponent<Image>().material.color.r;
-        colorResult.g = parents[selectedParent[1]].GetComponent<Image>().material.color.g;
-        colorResult.b = parents[selectedParent[2]].GetComponent<Image>().material.color.b;
+        colorResult.r = parents[selectedParent[0]].GetComponent<Image>().color.r;
+        colorResult.g = parents[selectedParent[1]].GetComponent<Image>().color.g;
+        colorResult.b = parents[selectedParent[2]].GetComponent<Image>().color.b;
 
         // Mutate Genes
         colorResult = Mutation(colorResult);
@@ -73,15 +80,21 @@ public class Genetics : MonoBehaviour
         // Compare Population to Target
         for (int i = 0; i < populationSize; i++)
         {
-            Vector3 memberComparable = new Vector3(population[i].GetComponent<Image>().material.color.r.Remap(0, 1, -1, 1), population[i].GetComponent<Image>().material.color.g.Remap(0, 1, -1, 1), population[i].GetComponent<Image>().material.color.b.Remap(0, 1, -1, 1)).normalized;
-            Vector3 targetComparable = new Vector3(target.material.color.r.Remap(0, 1, -1, 1), target.material.color.g.Remap(0, 1, -1, 1), target.material.color.b.Remap(0, 1, -1, 1)).normalized;
+            Vector3 memberComparable = new Vector3(population[i].GetComponent<Image>().color.r, population[i].GetComponent<Image>().color.g, population[i].GetComponent<Image>().color.b).normalized;
+            Vector3 targetComparable = new Vector3(target.color.r, target.color.g, target.color.b).normalized;
 
             float comparison = Vector3.Dot(memberComparable, targetComparable);
             populationComparison[i] = comparison;
         }
-        float[] sortedComparison = populationComparison;
+        float[] sortedComparison = new float[populationComparison.Length];
+
+        for (int i = 0; i < populationComparison.Length; i++){
+            sortedComparison[i] = populationComparison[i];
+        }
+
         Array.Sort(sortedComparison);
-        
+        Array.Reverse(sortedComparison);
+
         // Select Best Parents
         for (int i = 0; i < populationSize; i++)
         {
@@ -107,25 +120,32 @@ public class Genetics : MonoBehaviour
     {
         SpawnPopulation();
         populationComparison = new float[populationSize];
+        currentTime = timeDelay;
     }
 
     public void StartTime()
     {
         advanceTime = true;
+        timeControls[0].GetComponent<Button>().interactable = false;
+        timeControls[1].GetComponent<Button>().interactable = true;
     }
 
     public void StopTime()
     {
         advanceTime = false;
+        timeControls[0].GetComponent<Button>().interactable = true;
+        timeControls[1].GetComponent<Button>().interactable = false;
     }
-
+ 
     void Update()
     {
         if (advanceTime)
         {
             if (currentTime <= 0)
             {
-
+                SelectParents();
+                NewGeneration();
+                Debug.Log("New Generation Spawned");
                 currentTime = timeDelay;
             }
             else
