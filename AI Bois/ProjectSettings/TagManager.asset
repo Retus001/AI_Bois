@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - Wall
   - Utility
+  - Tree
   layers:
   - Default
   - TransparentFX
