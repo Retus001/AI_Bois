@@ -7,26 +7,34 @@ public class Human : MonoBehaviour
 {
     // Genes
     /*
-     * Body Type
+     * Head Shape
      * Skin Color
      * Eye Color
-     * 
-     * 
-     * 
+     * Eye Shape
+     * Brow Shape
+     * Nose Shape
+     * Lips Shape
      */ 
 
-    public Image body;
-    public Image eyes;
+    public Image head;
+    public Image eyeL;
+    public Image eyeR;
+    public Image browL;
+    public Image browR;
+    public Image mouth;
+    public Image nose;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public void SetAllGenes(Sprite _head, Sprite _eyes, Sprite _brows, Sprite _mouth, Sprite _nose, Color _skin, Color _iris){
+        head.sprite = _head;
+        head.color = _skin;
+        eyeL.sprite = _eyes;
+        eyeR.sprite = _eyes;
+        browL.sprite = _brows;
+        browR.sprite = _brows;
+        mouth.sprite = _mouth;
+        nose.sprite = _nose;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        eyeL.GetComponent<Image>().material.SetColor("_IrisColor", _iris);
+        eyeR.GetComponent<Image>().material.SetColor("_IrisColor", _iris);
     }
 }
