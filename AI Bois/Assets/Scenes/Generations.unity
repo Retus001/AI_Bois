@@ -397,13 +397,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b8dd3fe448e4042b1273393b48f52c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeDelay: 3
   miiPrefab: {fileID: 2533737051766792596, guid: c6e5a4de3d2cb8a4385fa6cfad960592,
     type: 3}
   miiAmmount: 32
   miiWorld: {fileID: 820323837}
-  Fathers: []
-  Mothers: []
-  mutationRate: 0
+  bodyMutationAmmount: 2
+  colorMutationAmmount: 0.01
   heads:
   - {fileID: 21300000, guid: 4e42b3cb06d763544b6329224301e9be, type: 3}
   - {fileID: 21300000, guid: 7c168554692904f4cb3b9c4108119692, type: 3}
@@ -609,7 +609,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
