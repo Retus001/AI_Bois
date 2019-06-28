@@ -397,13 +397,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b8dd3fe448e4042b1273393b48f52c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeDelay: 3
+  timeDelay: 1
   miiPrefab: {fileID: 2533737051766792596, guid: c6e5a4de3d2cb8a4385fa6cfad960592,
     type: 3}
   miiAmmount: 32
   miiWorld: {fileID: 820323837}
-  bodyMutationAmmount: 2
-  colorMutationAmmount: 0.01
+  bodyMutationAmmount: 0.1
+  colorMutationAmmount: 0
   heads:
   - {fileID: 21300000, guid: 4e42b3cb06d763544b6329224301e9be, type: 3}
   - {fileID: 21300000, guid: 7c168554692904f4cb3b9c4108119692, type: 3}
@@ -445,7 +445,7 @@ MonoBehaviour:
   - {r: 0.2735849, g: 0.18828964, b: 0.11485404, a: 1}
   - {r: 0.8018868, g: 0.72894955, b: 0.40472588, a: 1}
   - {r: 0.8773585, g: 0.7325116, b: 0.77723986, a: 1}
-  - {r: 0.9716981, g: 0.9476136, b: 0.9029459, a: 1}
+  - {r: 0.9150943, g: 0.47756076, b: 0.2978373, a: 1}
   iriscolor:
   - {r: 0, g: 0.89161634, b: 1, a: 0}
   - {r: 0.5660378, g: 0.34718397, b: 0.104129605, a: 0}
