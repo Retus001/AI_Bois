@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Roof
-  m_Shader: {fileID: 4800000, guid: 0382d4f7fe793794ca43179664b9024d, type: 3}
+  m_Name: HouseFurnitureB
+  m_Shader: {fileID: 4800000, guid: 5010a98033eca8245adf54c3cc156ca2, type: 3}
   m_ShaderKeywords: _LIGHTCOLORFRESNEL_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -43,6 +43,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _EmissionTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -52,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: fc043e582b4feea429fbc20f64529fce, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -71,26 +75,34 @@ Material:
     - _DstBlend: 0
     - _EmissionPannSpeedX: 0
     - _EmissionPannSpeedY: 0
+    - _EmissionPannX: 0
+    - _EmissionPannY: 0
+    - _EmissionPower: 0
     - _FresnelPower: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GlowDirectionPower: 0
     - _GlowIntensity: 0
+    - _MainPannX: 0
+    - _MainPannY: 0
     - _Metallic: 0
     - _Mode: 0
-    - _NormalPower: 0.5
+    - _NormalPower: 0.25
     - _OcclusionStrength: 1
     - _OutlineGlow: 0
-    - _OutlinePower: 0.05
+    - _OutlinePower: 0.03
+    - _OutlineWidth: 0.005
     - _PannSpeedX: 0
     - _PannSpeedY: 0
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpecularIntensity: 0
-    - _SpecularPower: 3.5
+    - _SpecularPower: 1.5
+    - _SpecularSize: 8
     - _SrcBlend: 1
+    - _Steps: 3
     - _UVSec: 0
     - _ZWrite: 1
     - _lightColorFresnel: 0.6078432
@@ -100,8 +112,8 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FresnelColor: {r: 0.6078432, g: 0.9734884, b: 1, a: 1}
     - _GlowColor: {r: 1, g: 0, b: 0, a: 1}
-    - _LightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _MainColor: {r: 0.24528301, g: 0.20127586, b: 0.16313635, a: 1}
+    - _LightColor: {r: 0.5, g: 0.4684973, b: 0.379717, a: 1}
+    - _MainColor: {r: 0.4528302, g: 0.34970188, b: 0.23282307, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShadowColor: {r: 0.3424261, g: 0.3530363, b: 0.4245283, a: 1}
+    - _ShadowColor: {r: 0.745283, g: 0.73475015, b: 0.72067463, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}

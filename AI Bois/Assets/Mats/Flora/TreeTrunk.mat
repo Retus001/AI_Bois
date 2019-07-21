@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TreeTrunk
-  m_Shader: {fileID: 4800000, guid: 0382d4f7fe793794ca43179664b9024d, type: 3}
+  m_Shader: {fileID: 4800000, guid: 5010a98033eca8245adf54c3cc156ca2, type: 3}
   m_ShaderKeywords: _LIGHTCOLORFRESNEL_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -43,6 +43,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _EmissionTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -52,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:
-        m_Texture: {fileID: 2800000, guid: 2a0359762bd22af4095b04b1df74f360, type: 3}
+        m_Texture: {fileID: 2800000, guid: fc043e582b4feea429fbc20f64529fce, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -65,32 +69,40 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
-    - _CellShadingBalance: 0.5
+    - _CellShadingBalance: 0.52
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EmissionPannSpeedX: 0
     - _EmissionPannSpeedY: 0
+    - _EmissionPannX: 0
+    - _EmissionPannY: 0
+    - _EmissionPower: 0
     - _FresnelPower: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GlowDirectionPower: 0
     - _GlowIntensity: 0
+    - _MainPannX: 0
+    - _MainPannY: 0
     - _Metallic: 0
     - _Mode: 0
-    - _NormalPower: 1
+    - _NormalPower: 0.604
     - _OcclusionStrength: 1
     - _OutlineGlow: 0
     - _OutlinePower: 0.1
+    - _OutlineWidth: 0.1
     - _PannSpeedX: 0
     - _PannSpeedY: 0
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpecularIntensity: 0
-    - _SpecularPower: 3.5
+    - _SpecularPower: 1.5
+    - _SpecularSize: 8
     - _SrcBlend: 1
+    - _Steps: 2
     - _UVSec: 0
     - _ZWrite: 1
     - _lightColorFresnel: 0.6078432

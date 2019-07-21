@@ -10,6 +10,7 @@ TagManager:
   - Utility
   - Tree
   - FlockUnit
+  - Entrance
   layers:
   - Default
   - TransparentFX
