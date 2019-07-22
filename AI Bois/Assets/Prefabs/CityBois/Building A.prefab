@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2804949122617392789}
-  m_Layer: 0
+  - component: {fileID: 8490300143092703708}
+  m_Layer: 10
   m_Name: Building A
-  m_TagString: Untagged
+  m_TagString: CB_Static
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,6 +36,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8490300143092703708
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2804949122617392793}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 4, z: 2}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1 &6004052389248311177
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,7 +60,6 @@ GameObject:
   - component: {fileID: 957384139603911484}
   - component: {fileID: 3806962953112738534}
   - component: {fileID: 8803232872519841565}
-  - component: {fileID: 7906778953792188074}
   m_Layer: 0
   m_Name: Building
   m_TagString: Untagged
@@ -113,19 +126,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7906778953792188074
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6004052389248311177}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6499485393431322255
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +137,6 @@ GameObject:
   - component: {fileID: 5883958212522021617}
   - component: {fileID: 1629371583441674408}
   - component: {fileID: 1672860969356010429}
-  - component: {fileID: 5655851450100079338}
   m_Layer: 0
   m_Name: Roof
   m_TagString: Untagged
@@ -204,19 +203,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5655851450100079338
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6499485393431322255}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6780093731222300599
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +244,6 @@ GameObject:
   - component: {fileID: 6961487823682010749}
   - component: {fileID: 1126090840519718871}
   - component: {fileID: 3783080167377667493}
-  - component: {fileID: 6275860896968409607}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -325,19 +310,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6275860896968409607
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8311198932798979690}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8370740133486677226
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +321,6 @@ GameObject:
   - component: {fileID: 2067304881781575227}
   - component: {fileID: 7184276500873563881}
   - component: {fileID: 8844944723658842983}
-  - component: {fileID: 7602247827990655424}
   m_Layer: 0
   m_Name: RoofDeco
   m_TagString: Untagged
@@ -416,16 +387,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7602247827990655424
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8370740133486677226}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5004562180988820529}
   - component: {fileID: 8381614696622749969}
   - component: {fileID: 8609378195435601360}
-  - component: {fileID: 5517210533825234381}
   m_Layer: 0
   m_Name: Parking (6)
   m_TagString: Untagged
@@ -78,20 +77,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5517210533825234381
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2554443939611375699}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &5564888803984547478
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +88,6 @@ GameObject:
   - component: {fileID: 4358074289208782769}
   - component: {fileID: 5120184953061954511}
   - component: {fileID: 6085612635283713450}
-  - component: {fileID: 6188977606205508495}
   m_Layer: 0
   m_Name: Parking (8)
   m_TagString: Untagged
@@ -170,20 +154,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6188977606205508495
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5564888803984547478}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &5934415381481156181
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +165,6 @@ GameObject:
   - component: {fileID: 5866029855394514533}
   - component: {fileID: 7262543881490585892}
   - component: {fileID: 7966275413304411538}
-  - component: {fileID: 2988675393899537309}
   m_Layer: 0
   m_Name: Parking (5)
   m_TagString: Untagged
@@ -262,20 +231,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2988675393899537309
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5934415381481156181}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &6620741774493398224
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,7 +449,6 @@ GameObject:
   - component: {fileID: 2510850034118395148}
   - component: {fileID: 4824608439409939119}
   - component: {fileID: 3746953323287406244}
-  - component: {fileID: 7028007506070957539}
   m_Layer: 0
   m_Name: Roof
   m_TagString: Untagged
@@ -561,19 +515,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7028007506070957539
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6832648489871744476}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7049380358165516225
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +526,6 @@ GameObject:
   - component: {fileID: 7190769167757677548}
   - component: {fileID: 8133922470642600702}
   - component: {fileID: 8338253333016189139}
-  - component: {fileID: 163487328921982928}
   m_Layer: 0
   m_Name: Parking (7)
   m_TagString: Untagged
@@ -652,20 +592,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &163487328921982928
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7049380358165516225}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7473838282191210067
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,7 +633,6 @@ GameObject:
   - component: {fileID: 7641182810327333231}
   - component: {fileID: 7641182810327333226}
   - component: {fileID: 7641182810327333229}
-  - component: {fileID: 7641182810327333228}
   m_Layer: 0
   m_Name: Building
   m_TagString: Untagged
@@ -774,19 +699,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7641182810327333228
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7641182810327333230}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7641182810838999067
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,9 +708,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7641182810838999064}
-  m_Layer: 0
+  - component: {fileID: 5004818793391381601}
+  m_Layer: 10
   m_Name: PoliceStation
-  m_TagString: Untagged
+  m_TagString: CB_Static
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -811,7 +724,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7641182810838999067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 0, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7641182810327333231}
@@ -826,6 +739,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5004818793391381601
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7641182810838999067}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1, z: 3}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &8868762754312256350
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,7 +763,6 @@ GameObject:
   - component: {fileID: 5826691437428759959}
   - component: {fileID: 7308206536676349223}
   - component: {fileID: 6280035329415506253}
-  - component: {fileID: 5791391675471199754}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -904,16 +829,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5791391675471199754
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8868762754312256350}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

@@ -16,7 +16,6 @@ public class CB_House : MonoBehaviour
         } else {
             Debug.Log("Not Enough Space at: " + gameObject.name + " to house: " + _resident);
         }
-        
     }
 
     public void DropResident(GameObject _resident){

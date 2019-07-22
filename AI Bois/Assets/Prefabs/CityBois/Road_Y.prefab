@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5544097141358664774}
   - component: {fileID: 5544097141358664769}
   - component: {fileID: 5544097141358664768}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Road_Y
-  m_TagString: Untagged
+  m_TagString: CB_Static
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6119097383878370953}
   - component: {fileID: 6119097383878370952}
   - component: {fileID: 6119097383878370955}
-  m_Layer: 0
-  m_Name: Road_Cross 1
-  m_TagString: Untagged
+  m_Layer: 10
+  m_Name: Road_Cross
+  m_TagString: CB_Static
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

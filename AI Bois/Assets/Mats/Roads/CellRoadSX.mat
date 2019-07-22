@@ -56,8 +56,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:
-        m_Texture: {fileID: 2800000, guid: 88e3eb08617bd1b4c92a89192e6b4a90, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 515468a8a7a730643ab9f49022666447, type: 3}
+        m_Scale: {x: 10, y: 10}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
@@ -66,6 +66,10 @@ Material:
     - _ParallaxMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ShadowTex:
+        m_Texture: {fileID: 2800000, guid: 03408543e9c2b3a4ea385a1c6c98b26e, type: 3}
+        m_Scale: {x: 20, y: 20}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
@@ -88,7 +92,7 @@ Material:
     - _MainPannY: 0
     - _Metallic: 0
     - _Mode: 0
-    - _NormalPower: 1
+    - _NormalPower: 0.25
     - _OcclusionStrength: 1
     - _OutlineGlow: 0
     - _OutlinePower: 0.1
@@ -99,7 +103,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpecularIntensity: 0
-    - _SpecularPower: 1.5
+    - _SpecularPower: 0.6
     - _SpecularSize: 8
     - _SrcBlend: 1
     - _Steps: 2
@@ -112,8 +116,8 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FresnelColor: {r: 0.6078432, g: 0.9734884, b: 1, a: 1}
     - _GlowColor: {r: 1, g: 0, b: 0, a: 1}
-    - _LightColor: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
+    - _LightColor: {r: 0.745283, g: 0.6784888, b: 0.6784888, a: 1}
     - _MainColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShadowColor: {r: 0.3424261, g: 0.3530363, b: 0.4245283, a: 1}
-    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ShadowColor: {r: 0.7226771, g: 0.7272543, b: 0.754717, a: 1}
+    - _SpecularColor: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
