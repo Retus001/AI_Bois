@@ -24,6 +24,7 @@ public class CB_HumanController : MonoBehaviour
     public float strength;
     public float viewDistance;
     public float viewAngle;
+    private float currentHealth;
 
     // Internal
     [Header("Internal Variables")]
@@ -54,7 +55,9 @@ public class CB_HumanController : MonoBehaviour
 
     // Debugging
     [Header("Debugging")]
-    public float currentHealth;
+    public float frontDistance;
+    public float leftDistance;
+    public float rightDistance;
 
     public enum MOVEMENTSTATES
     {
@@ -108,6 +111,19 @@ public class CB_HumanController : MonoBehaviour
     }
 
     /// ACTIONS
+
+    // Select Random Action
+    public void SelectNextAction(int _action) {
+        
+    }
+
+    public void SelectNextAction(int _action, GameObject _target) {
+
+    }
+
+    public void SelectRandomAction() {
+        ACTIONSTATES action = (ACTIONSTATES)Random.Range(0, 9);
+    }
 
     // Enter House
     public void EnterHome(GameObject _target){
@@ -206,7 +222,7 @@ public class CB_HumanController : MonoBehaviour
         if (Physics.Raycast(pov.position, pov.forward, out Fhit, viewDistance, layerMask)){
             Debug.DrawRay(pov.position, pov.forward * Fhit.distance, Color.red);
             hittingFront = true;
-            //Debug.Log("Hitting: " + Fhit.collider.gameObject.name);
+            frontDistance = Fhit.distance;
         } else {
             Debug.DrawRay(pov.position, pov.forward * viewDistance, Color.green);
             hittingFront = false;
@@ -217,6 +233,7 @@ public class CB_HumanController : MonoBehaviour
         if (Physics.Raycast(pov.position, rightVector, out Rhit, viewDistance, layerMask)) {
             Debug.DrawRay(pov.position, rightVector * Rhit.distance, Color.red);
             hittingRight = true;
+            rightDistance = Rhit.distance;
         } else {
             Debug.DrawRay(pov.position, rightVector * viewDistance, Color.green);
             hittingRight = false;
@@ -227,6 +244,7 @@ public class CB_HumanController : MonoBehaviour
         if (Physics.Raycast(pov.position, leftVector, out Lhit, viewDistance, layerMask)) {
             Debug.DrawRay(pov.position, leftVector * Lhit.distance, Color.red);
             hittingLeft = true;
+            leftDistance = Lhit.distance;
         } else {
             Debug.DrawRay(pov.position, leftVector * viewDistance, Color.green);
             hittingLeft = false;
@@ -242,6 +260,7 @@ public class CB_HumanController : MonoBehaviour
                 if (rotSpeed > 0){
                     rotSpeed = -rotSpeed;
                 }
+                todo //Fix Rotation Adjustments
             }
             SetState(currentMovementState, ROTATIONSTATES.ROTATING, currentActionState);
         } else {
@@ -299,7 +318,7 @@ public class CB_HumanController : MonoBehaviour
             break;
 
             case ACTIONSTATES.IDLE:
-
+                SetState(MOVEMENTSTATES.IDLE, ROTATIONSTATES.IDLE, ACTIONSTATES.IDLE);
             break;
 
             case ACTIONSTATES.INTERACTING:
@@ -390,8 +409,16 @@ public class CB_HumanController : MonoBehaviour
             break;
 
             case ACTIONSTATES.COMMUTING:
-
-            break;
+                if (job != null) {
+                    target = job.entrance;
+                    if (Vector3.Distance(transform.position, job.entrance.position) <= 0.1f) {
+                        SetState(MOVEMENTSTATES.IDLE, ROTATIONSTATES.IDLE, ACTIONSTATES.IDLE);
+                        EnterOffice(gameObject);
+                    } else {
+                        SetState(MOVEMENTSTATES.MOVING, ROTATIONSTATES.LOOKINGAT, ACTIONSTATES.COMMUTING);
+                    }
+                }
+                break;
 
             case ACTIONSTATES.RETURNING:
                 if (house != null) {
@@ -406,8 +433,13 @@ public class CB_HumanController : MonoBehaviour
             break;
         }
 
+        // Check Surroundings and Adjust Behaviour
+        CheckForCollisions();
+        // CheckSoundFeed();
+        // CheckVisualFeed();
+
         // Movement States
-        switch(currentMovementState) {
+        switch (currentMovementState) {
             default:
                 Debug.Log("Entered Undefined Movement State");
             break;
@@ -459,11 +491,6 @@ public class CB_HumanController : MonoBehaviour
                 }
             break;
         }
-
-        // Check Surroundings and Adjust Behaviour
-        CheckForCollisions();
-        // CheckSoundFeed();
-        // CheckVisualFeed();
 
         // Testing
         if (Input.GetKeyDown(KeyCode.F)){

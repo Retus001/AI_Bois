@@ -13665,7 +13665,7 @@ PrefabInstance:
     - target: {fileID: 6512572450886832602, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.893
+      value: 3.209
       objectReference: {fileID: 0}
     - target: {fileID: 6512572450886832602, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
@@ -13675,7 +13675,7 @@ PrefabInstance:
     - target: {fileID: 6512572450886832602, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.125
+      value: 6.833
       objectReference: {fileID: 0}
     - target: {fileID: 6512572450886832602, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
@@ -13816,6 +13816,16 @@ PrefabInstance:
         type: 3}
       propertyPath: currentMovementState
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: frontWallDistancing
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: peripheralWallDistancing
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecb50a41cedc1e34ba480320fd3b3660, type: 3}
