@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8163304540680396406}
   - component: {fileID: 8163304540680396407}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tree
   m_TagString: Tree
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 8163304541370133928}
   - component: {fileID: 8163304541370133931}
   - component: {fileID: 8163304541370133930}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Stump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 8163304542579598648}
   - component: {fileID: 8163304542579598651}
   - component: {fileID: 8163304542579598650}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,6 +238,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 83252263528d1204bb7f1a4afdd6e777, type: 3}
       propertyPath: m_Name
       value: Leaves
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83252263528d1204bb7f1a4afdd6e777, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 83252263528d1204bb7f1a4afdd6e777, type: 3}
       propertyPath: m_LocalPosition.x

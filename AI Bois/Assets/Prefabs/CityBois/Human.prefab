@@ -268,9 +268,9 @@ MonoBehaviour:
   randomBodyColor: 1
   bodyColor: {r: 1, g: 1, b: 1, a: 1}
   maxHealth: 10
-  speed: 0.4
-  speedRunMultiplier: 3
-  rotSpeed: 15
+  speed: 0.3
+  speedRunMultiplier: 4
+  rotSpeed: 1
   strength: 10
   viewDistance: 10
   viewAngle: 45
@@ -279,19 +279,22 @@ MonoBehaviour:
     m_Bits: 15360
   velocityGainDelay: 0.1
   velocityFalloffDelay: 0.1
-  rotationGainDelay: 0.1
-  rotationFalloffDelay: 0.1
-  followDistanceWalkLimit: 0
-  frontWallDistancing: 0.3
-  peripheralWallDistancing: 0.15
+  rotationGainDelay: 0.75
+  rotationFalloffDelay: 0.6
+  followDistanceWalkLimit: 3
+  frontWallDistancing: 0.4
+  peripheralWallDistancing: 0.4
   actionCooldown: 5
   currentCooldown: 0
   house: {fileID: 0}
   car: {fileID: 0}
   job: {fileID: 0}
+  workShift: 60
   target: {fileID: 0}
   chasers: []
-  currentHealth: 0
+  frontDistance: 0
+  leftDistance: 0
+  rightDistance: 0
   currentMovementState: 0
   currentRotationState: 0
   currentActionState: 0

@@ -3850,12 +3850,12 @@ PrefabInstance:
     - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
       propertyPath: rotationGainDelay
-      value: 0.3
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
       propertyPath: rotationFalloffDelay
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
@@ -3911,6 +3911,31 @@ PrefabInstance:
         type: 3}
       propertyPath: currentActionState
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: peripheralWallDistancing
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: frontWallDistancing
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286096, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286096, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286096, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecb50a41cedc1e34ba480320fd3b3660, type: 3}
@@ -6570,12 +6595,12 @@ PrefabInstance:
     - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
       propertyPath: rotationGainDelay
-      value: 0.3
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
       propertyPath: rotationFalloffDelay
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
@@ -6646,6 +6671,31 @@ PrefabInstance:
         type: 3}
       propertyPath: currentMovementState
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: peripheralWallDistancing
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: frontWallDistancing
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286096, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286096, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286096, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecb50a41cedc1e34ba480320fd3b3660, type: 3}
@@ -6744,12 +6794,12 @@ PrefabInstance:
     - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
       propertyPath: rotationGainDelay
-      value: 0.3
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
       propertyPath: rotationFalloffDelay
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
@@ -6805,6 +6855,31 @@ PrefabInstance:
         type: 3}
       propertyPath: currentActionState
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: peripheralWallDistancing
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: frontWallDistancing
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286096, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286096, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286096, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecb50a41cedc1e34ba480320fd3b3660, type: 3}
@@ -13730,7 +13805,7 @@ PrefabInstance:
     - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
       propertyPath: rotSpeed
-      value: 0.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
@@ -13740,12 +13815,12 @@ PrefabInstance:
     - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
       propertyPath: rotationGainDelay
-      value: 0.3
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
       propertyPath: rotationFalloffDelay
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
@@ -13825,7 +13900,22 @@ PrefabInstance:
     - target: {fileID: 6512572450736286097, guid: ecb50a41cedc1e34ba480320fd3b3660,
         type: 3}
       propertyPath: peripheralWallDistancing
-      value: 0.3
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286096, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286096, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512572450736286096, guid: ecb50a41cedc1e34ba480320fd3b3660,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecb50a41cedc1e34ba480320fd3b3660, type: 3}

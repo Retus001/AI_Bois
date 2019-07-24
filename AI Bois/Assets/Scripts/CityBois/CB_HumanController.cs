@@ -50,6 +50,7 @@ public class CB_HumanController : MonoBehaviour
     public CB_House house;
     public CB_Car car;
     public CB_Office job;
+    public float workShift;
     public Transform target;
     public List<Transform> chasers;
 
@@ -113,16 +114,18 @@ public class CB_HumanController : MonoBehaviour
     /// ACTIONS
 
     // Select Random Action
-    public void SelectNextAction(int _action) {
-        
+    public void SelectNextAction(ACTIONSTATES _action) {
+        SetState(currentMovementState, currentRotationState, _action);
     }
 
-    public void SelectNextAction(int _action, GameObject _target) {
-
+    public void SelectNextAction(ACTIONSTATES _action, GameObject _target) {
+        target = _target.transform;
+        SetState(currentMovementState, currentRotationState, _action);
     }
 
     public void SelectRandomAction() {
-        ACTIONSTATES action = (ACTIONSTATES)Random.Range(0, 9);
+        ACTIONSTATES action = (ACTIONSTATES)Random.Range(6, 8);
+        SetState(currentMovementState, currentRotationState, action);
     }
 
     // Enter House
@@ -260,18 +263,15 @@ public class CB_HumanController : MonoBehaviour
                 if (rotSpeed > 0){
                     rotSpeed = -rotSpeed;
                 }
-                todo //Fix Rotation Adjustments
             }
             SetState(currentMovementState, ROTATIONSTATES.ROTATING, currentActionState);
-        } else {
-            SetState(currentMovementState, ROTATIONSTATES.IDLE, currentActionState);
         }
 
         // Adjust Rotation with peripheral vision
         if (hittingRight && Rhit.distance <= peripheralWallDistancing) {
             if (rotSpeed > 0){
                 rotSpeed = -rotSpeed;
-            }
+            };
             SetState(currentMovementState, ROTATIONSTATES.ROTATING, currentActionState);
         }
         else if (hittingLeft && Lhit.distance <= peripheralWallDistancing) {
@@ -279,8 +279,6 @@ public class CB_HumanController : MonoBehaviour
                 rotSpeed = -rotSpeed;
             }
             SetState(currentMovementState, ROTATIONSTATES.ROTATING, currentActionState);
-        } else {
-            SetState(currentMovementState, ROTATIONSTATES.IDLE, currentActionState);
         }
     }
 
@@ -298,6 +296,23 @@ public class CB_HumanController : MonoBehaviour
     public void ResetActionCooldown() {
         canTakeAction = false;
         currentCooldown = actionCooldown;
+    }
+
+    // Imported Methods
+
+    Vector3 RotateAxisToNearestSide(Vector3 eulerAngles)
+    {
+        Vector3 roundedEulerAngles = RoundToNearest90Degree(eulerAngles);
+        return Vector3.Slerp(eulerAngles, roundedEulerAngles, rotationGainDelay);
+    }
+
+    Vector3 RoundToNearest90Degree(Vector3 eulerAngles)
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            eulerAngles[i] = Mathf.Round(eulerAngles[i] / 90f) * 90f;
+        }
+        return eulerAngles;
     }
 
     void Update()
@@ -468,7 +483,8 @@ public class CB_HumanController : MonoBehaviour
 
             case ROTATIONSTATES.IDLE:
                 if (Vector3.Distance(rig.angularVelocity, Vector3.zero) > 0.01f) {
-                    rig.angularVelocity = Vector3.Lerp(rig.angularVelocity, Vector3.zero, rotationFalloffDelay); } else {
+                    rig.angularVelocity = Vector3.Lerp(rig.angularVelocity, Vector3.zero, rotationFalloffDelay); 
+                    } else {
                         rig.angularVelocity = Vector3.zero;
                     }
             break;
@@ -479,12 +495,15 @@ public class CB_HumanController : MonoBehaviour
 
             case ROTATIONSTATES.LOOKINGAT:
                 if (target != null) {
-                    /* Vector3 lookAtVector = target.position - transform.position;
-                    if (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(lookAtVector)) > 0.1f){
-                        rig.angularVelocity = Vector3.Lerp(rig.angularVelocity, transform.up * rotSpeed * hpSpeedModifier, rotationGainDelay);
-                    } */
+                    Vector3 lookAtVector = target.position - transform.position;
+                    Vector3 newDir = Vector3.RotateTowards(transform.forward, lookAtVector, rotationGainDelay * Time.deltaTime * 2f, 0.0f);
+                    Quaternion toRotation = Quaternion.LookRotation(lookAtVector);
 
-                    transform.LookAt(target);
+                    if (Quaternion.Angle(transform.rotation, toRotation) > 0.5f) {
+                        transform.rotation = Quaternion.LookRotation(newDir);
+                    } else {
+                        rig.angularVelocity = Vector3.zero;
+                    }
                 } else {
                     Debug.Log("No Target Available");
                     SetState(currentMovementState, ROTATIONSTATES.IDLE, currentActionState);
@@ -496,5 +515,18 @@ public class CB_HumanController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F)){
             ReceiveDamage(0.5f);
         }
+    }
+
+    IEnumerator AtHome() {
+        float randomDelay = Random.Range(5f, 20f);
+        yield return new WaitForSeconds(randomDelay);
+        house.DropResident(gameObject);
+        SelectRandomAction();
+    }
+
+    IEnumerator AtWork() {
+        yield return new WaitForSeconds(workShift);
+        job.DropEmployee(gameObject);
+        SelectNextAction(ACTIONSTATES.RETURNING);
     }
 }
