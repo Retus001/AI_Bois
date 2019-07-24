@@ -10,9 +10,15 @@ public class CB_Office : MonoBehaviour
 
     public void StoreEmployee(GameObject _employee) {
         _employee.transform.position = gameObject.transform.position;
+        if (employees.Count < maxEmployees) {
+            employees.Add(_employee);
+        } else {
+            DropEmployee(_employee);
+        }
     }
 
     public void DropEmployee(GameObject _employee) {
+        employees.Remove(_employee);
         _employee.transform.position = entrance.position;
     }
 }

@@ -77,6 +77,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &570287907377794224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5104576471859861257}
+  m_Layer: 0
+  m_Name: Entrance
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5104576471859861257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570287907377794224}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2, y: 0, z: 2.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4603340691656769510}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1093760507647621022
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +426,7 @@ GameObject:
   - component: {fileID: 4603340691656769510}
   - component: {fileID: 2920009807760790481}
   - component: {fileID: 1899619376548771211}
+  - component: {fileID: 531821227432714565}
   m_Layer: 10
   m_Name: FireStation
   m_TagString: CB_Static
@@ -421,6 +452,7 @@ Transform:
   - {fileID: 8670035324897662728}
   - {fileID: 2956828440091687853}
   - {fileID: 6583792141725042591}
+  - {fileID: 5104576471859861257}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -450,6 +482,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 3, z: 1}
   m_Center: {x: -3.5, y: 1.5, z: 1}
+--- !u!114 &531821227432714565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4603340691656769513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e2ab82133e3e4748a19f9cb13a1240b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxFiremen: 8
+  firemen: []
+  entrance: {fileID: 5104576471859861257}
 --- !u!1 &6161354017063833053
 GameObject:
   m_ObjectHideFlags: 0
