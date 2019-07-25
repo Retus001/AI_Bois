@@ -41,6 +41,10 @@ public class CB_HumanController : MonoBehaviour
     private Rigidbody rig;
     private float hpSpeedModifier;
     private bool canTakeAction = true;
+    private OneLightDayNightCycle sundial;
+    private float activityStartTime;
+    private bool finishedWander = true;
+    private bool working = false;
 
     static MaterialPropertyBlock propertyBlock;
     static int colorID = Shader.PropertyToID("_MainColor");
@@ -50,15 +54,13 @@ public class CB_HumanController : MonoBehaviour
     public CB_House house;
     public CB_Car car;
     public CB_Office job;
-    public float workShift;
+    public float workShiftStart;
+    public float workShiftLength;
     public Transform target;
     public List<Transform> chasers;
 
     // Debugging
-    [Header("Debugging")]
-    public float frontDistance;
-    public float leftDistance;
-    public float rightDistance;
+    //[Header("Debugging")]
 
     public enum MOVEMENTSTATES
     {
@@ -84,7 +86,9 @@ public class CB_HumanController : MonoBehaviour
         ESCAPING,
         COMMUTING,
         RETURNING,
-        WANDERING
+        WANDERING,
+        WORKING,
+        RESTING
     }
 
     [Header("States")]
@@ -102,6 +106,7 @@ public class CB_HumanController : MonoBehaviour
         }
         propertyBlock.SetColor(colorID, bodyColor);
         body.GetComponent<MeshRenderer>().SetPropertyBlock(propertyBlock);
+        sundial = GameObject.Find("TheSun").GetComponent<OneLightDayNightCycle>();
     }
 
     void Start() {
@@ -223,36 +228,34 @@ public class CB_HumanController : MonoBehaviour
 
         // Front Raycast
         if (Physics.Raycast(pov.position, pov.forward, out Fhit, viewDistance, layerMask)){
-            Debug.DrawRay(pov.position, pov.forward * Fhit.distance, Color.red);
+            //Debug.DrawRay(pov.position, pov.forward * Fhit.distance, Color.red);
             hittingFront = true;
-            frontDistance = Fhit.distance;
         } else {
-            Debug.DrawRay(pov.position, pov.forward * viewDistance, Color.green);
+            //Debug.DrawRay(pov.position, pov.forward * viewDistance, Color.green);
             hittingFront = false;
         }
 
         // Right Raycast
         Vector3 rightVector = Quaternion.AngleAxis(viewAngle, new Vector3(0, 1, 0)) * pov.forward;
         if (Physics.Raycast(pov.position, rightVector, out Rhit, viewDistance, layerMask)) {
-            Debug.DrawRay(pov.position, rightVector * Rhit.distance, Color.red);
+            //Debug.DrawRay(pov.position, rightVector * Rhit.distance, Color.red);
             hittingRight = true;
-            rightDistance = Rhit.distance;
         } else {
-            Debug.DrawRay(pov.position, rightVector * viewDistance, Color.green);
+            //Debug.DrawRay(pov.position, rightVector * viewDistance, Color.green);
             hittingRight = false;
         }
 
         // Left Raycast
         Vector3 leftVector = Quaternion.AngleAxis(-viewAngle, new Vector3(0, 1, 0)) * pov.forward;
         if (Physics.Raycast(pov.position, leftVector, out Lhit, viewDistance, layerMask)) {
-            Debug.DrawRay(pov.position, leftVector * Lhit.distance, Color.red);
+            //Debug.DrawRay(pov.position, leftVector * Lhit.distance, Color.red);
             hittingLeft = true;
-            leftDistance = Lhit.distance;
         } else {
-            Debug.DrawRay(pov.position, leftVector * viewDistance, Color.green);
+            //Debug.DrawRay(pov.position, leftVector * viewDistance, Color.green);
             hittingLeft = false;
         }
 
+        
         // Process RaycastInformation
         if (hittingFront && Fhit.distance <= frontWallDistancing) {
             if (hittingLeft && !hittingRight) { // Only Left Hitting
@@ -264,7 +267,11 @@ public class CB_HumanController : MonoBehaviour
                     rotSpeed = -rotSpeed;
                 }
             }
-            SetState(currentMovementState, ROTATIONSTATES.ROTATING, currentActionState);
+            if (Fhit.distance <= 0.1f){
+                SetState(MOVEMENTSTATES.IDLE, ROTATIONSTATES.ROTATING, currentActionState);
+            } else {
+                SetState(currentMovementState, ROTATIONSTATES.ROTATING, currentActionState);
+            }
         }
 
         // Adjust Rotation with peripheral vision
@@ -298,6 +305,20 @@ public class CB_HumanController : MonoBehaviour
         currentCooldown = actionCooldown;
     }
 
+    // Get Time
+
+    public float CurrentTime() {
+        return sundial.currentTime;
+    }
+
+    // Alarms
+
+    public void WorkAlarm() {
+        if (!working && CurrentTime() >= workShiftStart && currentActionState != ACTIONSTATES.COMMUTING && CurrentTime() < workShiftStart + 1f) {
+            SetState(currentMovementState, currentRotationState, ACTIONSTATES.COMMUTING);
+        }
+    }
+
     // Imported Methods
 
     Vector3 RotateAxisToNearestSide(Vector3 eulerAngles)
@@ -325,6 +346,9 @@ public class CB_HumanController : MonoBehaviour
 
         // Calculate Action Cooldown
         ActionCooldown();
+
+        // Check Alarms
+        WorkAlarm();
 
         // Action States
         switch (currentActionState) {
@@ -423,12 +447,19 @@ public class CB_HumanController : MonoBehaviour
                 }
             break;
 
+            case ACTIONSTATES.WANDERING:
+                if (finishedWander) {
+                    StartCoroutine(Wander());
+                }
+            break;
+
             case ACTIONSTATES.COMMUTING:
                 if (job != null) {
                     target = job.entrance;
                     if (Vector3.Distance(transform.position, job.entrance.position) <= 0.1f) {
-                        SetState(MOVEMENTSTATES.IDLE, ROTATIONSTATES.IDLE, ACTIONSTATES.IDLE);
+                        SetState(MOVEMENTSTATES.IDLE, ROTATIONSTATES.IDLE, ACTIONSTATES.WORKING);
                         EnterOffice(gameObject);
+                        working = true;
                     } else {
                         SetState(MOVEMENTSTATES.MOVING, ROTATIONSTATES.LOOKINGAT, ACTIONSTATES.COMMUTING);
                     }
@@ -439,11 +470,27 @@ public class CB_HumanController : MonoBehaviour
                 if (house != null) {
                     target = house.entrance;
                     if (Vector3.Distance(transform.position, house.entrance.position) <= 0.1f) {
-                        SetState(MOVEMENTSTATES.IDLE, ROTATIONSTATES.IDLE, ACTIONSTATES.IDLE);
+                        SetState(MOVEMENTSTATES.IDLE, ROTATIONSTATES.IDLE, ACTIONSTATES.RESTING);
                         EnterHome(gameObject);
+                        activityStartTime = CurrentTime();
                     } else {
                         SetState(MOVEMENTSTATES.MOVING, ROTATIONSTATES.LOOKINGAT, ACTIONSTATES.RETURNING);
                     }
+                }
+            break;
+
+            case ACTIONSTATES.WORKING:
+                if (CurrentTime() >= workShiftStart + workShiftLength + (Random.Range(-0.2f, 0.2f))) {
+                    working = false;
+                    job.DropEmployee(gameObject);
+                    SelectNextAction(ACTIONSTATES.RETURNING);
+                }
+            break;
+
+            case ACTIONSTATES.RESTING:
+                if (CurrentTime() >= activityStartTime + Random.Range(1f, 5f)) {
+                    house.DropResident(gameObject);
+                    SelectNextAction(ACTIONSTATES.WANDERING);
                 }
             break;
         }
@@ -517,16 +564,33 @@ public class CB_HumanController : MonoBehaviour
         }
     }
 
-    IEnumerator AtHome() {
-        float randomDelay = Random.Range(5f, 20f);
-        yield return new WaitForSeconds(randomDelay);
-        house.DropResident(gameObject);
-        SelectRandomAction();
+    public void RandomWanderRotation() {
+        float randomRot = Random.Range(1f, 3f);
+        if (randomRot >= 0 && randomRot < 1f) {
+            currentRotationState = ROTATIONSTATES.IDLE;
+        } else if (randomRot >= 1f && randomRot < 2f) {
+            if (rotSpeed < 0) {
+                rotSpeed = -rotSpeed;
+            }
+            currentRotationState = ROTATIONSTATES.ROTATING;
+        } else {
+            if (rotSpeed > 0) {
+                rotSpeed = -rotSpeed;
+            }
+            currentRotationState = ROTATIONSTATES.ROTATING;
+        }
     }
+    
+    IEnumerator Wander() {
+        finishedWander = false;
+        RandomWanderRotation();
+        SetState(MOVEMENTSTATES.MOVING, currentRotationState, ACTIONSTATES.WANDERING);
+        yield return new WaitForSeconds(Random.Range(5f, 10f));
+        finishedWander = true;
 
-    IEnumerator AtWork() {
-        yield return new WaitForSeconds(workShift);
-        job.DropEmployee(gameObject);
-        SelectNextAction(ACTIONSTATES.RETURNING);
+        float endWandering = Random.Range(0f, 10f);
+        if (endWandering >= 9f) {
+            SetState(currentMovementState, currentRotationState, ACTIONSTATES.RETURNING);
+        }
     }
 }
